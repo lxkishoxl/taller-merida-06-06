@@ -1,2 +1,2 @@
 # taller-merida-06-06
-agregamos un comando
+Este es un readme file.
