@@ -14,3 +14,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+        # los tres bloques de arriba son los bloques esenciales, ya luego se le da las especificaciones
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: crear tabla de resultados
+        run: |
+            echo 'Estoy en la caperta action'
