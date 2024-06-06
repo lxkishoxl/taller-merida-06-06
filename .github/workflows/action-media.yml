@@ -24,4 +24,5 @@ jobs:
       
       - name: crear tabla de resultados
         run: |
-            echo 'Estoy en la caperta action'
+            echo 'Estoy en la caperta action' 
+            cat holamundo.txt
