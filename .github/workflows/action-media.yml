@@ -15,14 +15,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-        # los tres bloques de arriba son los bloques esenciales, ya luego se le da las especificaciones
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: crear tabla por pais
+      - name: crear tablas por pais
         run: |
           grep -i Germany companies-all.csv  > companies_germany.csv
           grep -i Kingdom companies-all.csv  > companies_united_kingdom.csv
@@ -40,11 +38,11 @@ jobs:
           git diff --cached --exit-code || git commit -m "tabla actualizada" --allow-empty
           git push --force-with-lease origin HEAD:main
 
-  viendo_datos:
-    needs: analizando_datos
-    runs-on: macos-12
+  viendo_datos: # nombre del job
+    needs: analizando_datos # Job(s) de los que depende
+    runs-on: macos-12 #Sistema operativo
     steps:
-      - name: Checkout code
+      - name: Checkout code 
         uses: actions/checkout@v4
 
       - name: imprimir tabla bruta y neta
@@ -54,4 +52,8 @@ jobs:
           echo
           echo "Tabla desde empresas alemanas"
           cat companies_germany.csv
+          echo
+          echo "Tabla desde empresas inglesas"
+          cat companies_united_kingdom.csv
+          echo
           echo "done, ciao"
