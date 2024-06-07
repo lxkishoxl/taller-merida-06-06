@@ -23,19 +23,19 @@ jobs:
           python-version: '3.x'
 
       - name: crear tabla por pais
-      run: |
-        grep -i Germany companies-all.csv  > companies_germany.csv
-        grep -i Kingdom companies-all.csv  > companies_united_kingdom.csv
-        grep -i France companies-all.csv  > companies_france.csv
+        run: |
+          grep -i Germany companies-all.csv  > companies_germany.csv
+          grep -i Kingdom companies-all.csv  > companies_united_kingdom.csv
+          grep -i France companies-all.csv  > companies_france.csv
 
       - name: Commit results
-      if: always()
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git diff --quiet || git stash
-        git pull --rebase origin main
-        git stash list | grep "stash@{0}" && git stash apply
-        git add .
-        git diff --cached --exit-code || git commit -m "tabla actualizada" --allow-empty
-        git push --force-with-lease origin HEAD:main
+        if: always()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git diff --quiet || git stash
+          git pull --rebase origin main
+          git stash list | grep "stash@{0}" && git stash apply
+          git add .
+          git diff --cached --exit-code || git commit -m "tabla actualizada" --allow-empty
+          git push --force-with-lease origin HEAD:main
