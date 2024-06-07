@@ -80,7 +80,7 @@ jobs:
 
   viendo_uk: # nombre del job
     needs: analizando_datos # Job(s) de los que depende
-    runs-on: ubuntu_latest #Sistema operativo
+    runs-on: ubuntu-latest #Sistema operativo
     steps:
       - name: Checkout code 
         uses: actions/checkout@v4
